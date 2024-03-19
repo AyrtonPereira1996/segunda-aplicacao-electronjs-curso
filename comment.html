@@ -1,0 +1,42 @@
+<head>
+
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <label for="">Digite o seu comentário no campo abaixo</label>
+        </div>
+
+        <div>
+            <input type="text" autofocus>
+        </div>
+
+        <button type="submit">Enviar Comentário</button>
+
+    </form>
+
+    <script>
+
+        //IMPORTACAO DA BIBLIOTECA DO ELECTRON
+        const electron = require('electron');
+
+        //EXTRACAO DO IPCRenderer por destroturacao da biblioteca electron
+        const { ipcRenderer } = electron;
+
+
+        document.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            //DEBUGGER; -> PERMITE-NOS PAUSAR A EXECUÇÃO DO PROGRAMAS PARA
+            //ANALISAR EM TEMPO REAL A INFORMACAO QUE O INPUT CARREGA
+            // debugger;
+
+            const { value } = document.querySelector('input');
+
+            ipcRenderer.send('addComment', value);
+
+        });
+
+    </script>
+</body>

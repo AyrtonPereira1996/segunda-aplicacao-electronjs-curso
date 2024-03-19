@@ -1,0 +1,29 @@
+<head>
+
+
+</head>
+
+
+<body>
+    <h1> Comentários</h1>
+
+    <div>
+
+
+     </div>
+
+    <script>
+        const electron = require('electron');
+
+        const { ipcRenderer } = electron;
+
+        ipcRenderer.on('addComment', (event, userComment) => {
+            const p = document.createElement('p');
+            const text = document.createTextNode(userComment);
+
+            p.appendChild(text);
+            document.querySelector('div').appendChild(p);
+
+        });
+    </script>
+</body>
